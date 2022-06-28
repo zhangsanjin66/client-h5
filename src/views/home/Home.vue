@@ -27,41 +27,15 @@
           </div>
         </div>
       </div>
-      <div class="container flex">
-        <div class="picture">
-          <div class="item-picture">
-            <img
-              class="icon-picture"
-              src="../../assets/images/picture_icon.png"
-              alt=""
-            />
-          </div>
-          <div class="text-align pd-top10-bottom5">Picture</div>
-          <div class="font-color">local screencast</div>
-        </div>
-        <div class="file">
-          <div class="item-file">
-            <img
-              class="icon-folder"
-              src="../../assets/images/folder_icon.png"
-              alt=""
-            />
-          </div>
-          <div class="text-align pd-top10-bottom5">file</div>
-          <div class="font-color">local screencast</div>
-        </div>
-        <div class="file">
-          <div class="item-file">
-            <img
-              class="icon-folder"
-              src="../../assets/images/folder_icon.png"
-              alt=""
-            />
-          </div>
-          <div class="text-align pd-top10-bottom5">file</div>
-          <div class="font-color">local screencast</div>
-        </div>
-      </div>
+      <swiper-view>
+        <swiper-slice
+          v-for="item in swipernew"
+          :key="item.id"
+          :desc="item.desc"
+          :icon="item.icon"
+          >{{ item.name }}</swiper-slice
+        >
+      </swiper-view>
       <div class="footer">
         <div class="screen align-center">
           <div class="icon-round flex-center">
@@ -73,11 +47,11 @@
           </div>
         </div>
         <div class="flex-between footer-button">
-          <div class="timeout align-center">
+          <div class="timeout flex-around">
             <img src="../../assets/images/timeout_icon.png" alt="" />
             <div class="">time out</div>
           </div>
-          <div class="end align-center">
+          <div class="timeout flex-around">
             <img src="../../assets/images/end_icon.png" alt="" />
             <div class="pl-5">End</div>
           </div>
@@ -86,6 +60,50 @@
     </div>
   </div>
 </template>
+<script>
+import SwiperView from "../../components/SwiperView.vue";
+import SwiperSlice from "../../components/SwiperSlice.vue";
+
+export default {
+  components: { SwiperView, SwiperSlice },
+  data() {
+    return {
+      swipernew: [
+        {
+          id: 1,
+          name: "file",
+          desc: "sasdasdasda",
+          icon: "folder",
+        },
+        {
+          id: 2,
+          name: "file",
+          desc: "sasdasdasda",
+          icon: "folder",
+        },
+        {
+          id: 3,
+          name: "file",
+          desc: "sasdasdasda",
+          icon: "folder",
+        },
+        {
+          id: 4,
+          name: "file",
+          desc: "sasdasdasda",
+          icon: "folder",
+        },
+        {
+          id: 5,
+          name: "file",
+          desc: "sasdasdasda",
+          icon: "folder",
+        },
+      ],
+    };
+  },
+};
+</script>
 <style scoped>
 .home {
   background-color: #948bfc;
@@ -140,44 +158,7 @@
 .common {
   font-size: 1rem;
 }
-.picture {
-  padding: 27px 12px;
-  background-color: #7367fb;
-  font-size: 1.7rem;
-  color: #fff;
-  border-radius: 30px;
-}
-.icon-picture {
-  padding: 15px;
-  display: block;
-  margin: 0 auto;
-}
-.item-picture {
-  background-color: #d3d7ff;
-  margin: 0 26px;
-  border-radius: 25px;
-}
-.font-color {
-  color: #b6bbc9;
-}
-.file {
-  padding: 27px 12px;
-  background-color: #fff;
-  font-size: 1.7rem;
-  border-radius: 30px;
-  color: black;
-  margin: 0 15px;
-}
-.icon-folder {
-  padding: 15px;
-  display: block;
-  margin: 0 auto;
-}
-.item-file {
-  background-color: #ffebdc;
-  margin: 0 26px;
-  border-radius: 25px;
-}
+
 .footer {
   background-color: #e5e2ff;
   border-radius: 30px;
@@ -203,25 +184,18 @@
   color: #b6bbc9;
 }
 .timeout {
+  width: 12rem;
+  height: 4rem;
+  padding: 5px 16px;
   font-size: 1rem;
-  padding: 14px 42px;
   background-color: #fff;
   border-radius: 30px;
-  font-weight: bold;
-}
-.end {
-  font-size: 1rem;
-  padding: 14px 42px;
-  background-color: #fff;
-  border-radius: 40px;
   font-weight: bold;
 }
 .footer-button {
   padding: 40px 7px;
 }
-.container {
-  overflow-x: scroll;
-}
+
 ::-webkit-scrollbar {
   display: none;
 }

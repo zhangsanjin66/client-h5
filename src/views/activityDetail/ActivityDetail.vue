@@ -102,6 +102,8 @@
 .bottom {
   background: white;
   border-radius: 4rem 4rem 0rem 0rem;
+  position: relative;
+  bottom: 0;
 }
 
 .bottom-header {
